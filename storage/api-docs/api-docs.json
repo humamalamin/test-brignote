@@ -1,0 +1,255 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Application Test Brignote",
+        "description": "This is application for testing",
+        "contact": {
+            "email": "admin@admin.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/roles": {
+            "get": {
+                "tags": [
+                    "role"
+                ],
+                "summary": "List data role.",
+                "description": "Get All data Role",
+                "operationId": "App\\Http\\Controllers\\API\\RoleController::index",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "allOf": [
+                                                    {
+                                                        "$ref": "#/components/schemas/Role"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/roles/{rolesId}": {
+            "get": {
+                "tags": [
+                    "role"
+                ],
+                "summary": "Get role by ID",
+                "description": "Return single role data",
+                "operationId": "App\\Http\\Controllers\\API\\RoleController::show",
+                "parameters": [
+                    {
+                        "name": "rolesId",
+                        "in": "path",
+                        "description": "ID of role to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "allOf": [
+                                                    {
+                                                        "$ref": "#/components/schemas/Role"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Role not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "role"
+                ],
+                "summary": "Edit Role",
+                "description": "Update role data",
+                "operationId": "App\\Http\\Controllers\\API\\RoleController::edit",
+                "parameters": [
+                    {
+                        "name": "rolesId",
+                        "in": "path",
+                        "description": "ID of role post return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "position": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "422": {
+                        "description": "Missing role parameter"
+                    },
+                    "404": {
+                        "description": "Role not found."
+                    },
+                    "400": {
+                        "description": "Invalid ID Role"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "role"
+                ],
+                "summary": "Delete Role by ID",
+                "description": "Delete role data",
+                "operationId": "App\\Http\\Controllers\\API\\RoleController::destroy",
+                "parameters": [
+                    {
+                        "name": "rolesId",
+                        "in": "path",
+                        "description": "ID of role post return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Role not found."
+                    }
+                }
+            }
+        },
+        "/api/v1/roles/create": {
+            "post": {
+                "tags": [
+                    "role"
+                ],
+                "summary": "Add new Role",
+                "description": "Adding new role data",
+                "operationId": "App\\Http\\Controllers\\API\\RoleController::store",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "position": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "422": {
+                        "description": "Missing role parameter"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Role": {
+                "title": "Role",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "position": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Role Apps",
+            "description": "API endpoint of Project"
+        }
+    ],
+    "security": [
+        []
+    ]
+}
