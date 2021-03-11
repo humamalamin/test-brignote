@@ -41,6 +41,11 @@ run php artisan serve
 access {host}/api/documentation
 ```
 
+## How To Run Unit Testing
+
+```
+.\vendor\bin\phpunit
+```
 ## How To Run With  Docker
 
 Soon

@@ -15,7 +15,7 @@
                 @csrf
                 <div class="form-group">
                     <label class="font-weight-bold text-uppercase">Email address</label>
-                    <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Alamat Email">
+                    <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Alamat Email">
                     @error('email')
                         <div class="alert alert-danger mt-2">
                             {{ $message }}
@@ -31,7 +31,7 @@
                         </div>    
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary">LOGIN</button>
+                <button type="submit" id="Login" class="btn btn-primary">Login</button>
             </form>
         </div>
     </div>

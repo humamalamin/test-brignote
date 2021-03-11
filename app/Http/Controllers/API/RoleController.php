@@ -240,7 +240,6 @@ class RoleController extends Controller
     {
         $validator = Validator::make(
             $request->all(), [
-                'user_id' => 'required|exists:users,id',
                 'status' => 'required|in:active,inactive',
                 'position' => 'required'
             ]
